@@ -1,0 +1,550 @@
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <!-- Pengaturan dasar halaman website -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#26351f">
+
+    <!-- Judul dan deskripsi website -->
+    <title>MenuKita — Menu Digital Cafe</title>
+    <meta
+        name="description"
+        content="Menu digital cafe yang elegan, praktis, dan mudah digunakan."
+    >
+
+    <!-- Menghubungkan font dari Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Menghubungkan file CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         1. NAVBAR / NAVIGASI UTAMA
+    ========================================== -->
+    <header class="topbar">
+
+        <!-- Logo dan nama website -->
+        <a class="brand" href="#beranda" aria-label="MenuKita beranda">
+            <span class="brand-mark">m</span>
+
+            <span>
+                Menu<span class="brand-light">Kita</span>
+            </span>
+        </a>
+
+        <!-- Menu navigasi -->
+        <nav class="desktop-nav" aria-label="Navigasi utama">
+            <a href="#beranda">Beranda</a>
+            <a href="#menu">Menu</a>
+            <a href="#tentang">Tentang</a>
+        </nav>
+
+        <!-- Tombol pengelolaan dan keranjang -->
+        <div class="top-actions">
+
+            <!-- Membuka panel pengelolaan menu -->
+            <button
+                class="icon-button admin-open"
+                id="adminOpen"
+                type="button"
+                aria-label="Buka pengelolaan menu"
+                title="Pengelola menu"
+            >
+                ⚙
+            </button>
+
+            <!-- Membuka keranjang pesanan -->
+            <button
+                class="cart-button"
+                id="cartOpen"
+                type="button"
+            >
+                <span aria-hidden="true">♧</span>
+                Keranjang
+
+                <!-- Jumlah seluruh item dalam keranjang -->
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+
+        </div>
+    </header>
+
+
+    <!-- =========================================
+         2. KONTEN UTAMA WEBSITE
+    ========================================== -->
+    <main>
+
+        <!-- HERO SECTION: Bagian pembuka website -->
+        <section class="hero" id="beranda">
+
+            <!-- Judul, deskripsi, dan tombol utama -->
+            <div class="hero-copy">
+
+                <p class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    GOOD FOOD, GOOD MOOD
+                </p>
+
+                <h1>
+                    Rasa terbaik,<br>
+                    <em>dalam setiap gigitan.</em>
+                </h1>
+
+                <p class="hero-description">
+                    Temukan menu favoritmu, dibuat dengan bahan
+                    pilihan dan disajikan dengan sepenuh hati.
+                </p>
+
+                <!-- Mengarahkan pengunjung ke bagian menu -->
+                <a class="primary-button" href="#menu">
+                    Jelajahi Menu
+                    <span aria-hidden="true">↗</span>
+                </a>
+
+            </div>
+
+            <!-- Foto utama dan menu rekomendasi -->
+            <div class="hero-image-wrap">
+
+                <img
+                    class="hero-image"
+                    src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1400&q=85"
+                    alt="Pasta tersaji di atas piring"
+                >
+
+                <!-- Lapisan gelap untuk membantu keterbacaan teks -->
+                <div class="hero-image-shade"></div>
+
+                <!-- Informasi menu unggulan -->
+                <div class="hero-caption">
+                    <span>REKOMENDASI HARI INI</span>
+                    <strong>Creamy Mushroom Pasta</strong>
+                    <b>Rp45.000</b>
+                </div>
+
+                <!-- Elemen dekoratif -->
+                <div class="hero-stamp">
+                    Fresh<br>
+                    <span>&</span>
+                    Made<br>
+                    with care
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================================
+             3. BAGIAN DAFTAR MENU
+        ========================================== -->
+        <section class="menu-section section-wrap" id="menu">
+
+            <!-- Judul bagian menu -->
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">PILIHAN UNTUKMU</p>
+                    <h2>
+                        Menu <em>favorit.</em>
+                    </h2>
+                </div>
+
+                <p class="section-note">
+                    Sesuatu yang lezat selalu punya cerita.
+                </p>
+            </div>
+
+            <!-- Pencarian dan filter kategori -->
+            <div class="menu-tools">
+
+                <!-- Input pencarian menu -->
+                <label class="search-box">
+                    <span aria-hidden="true">⌕</span>
+
+                    <input
+                        id="searchInput"
+                        type="search"
+                        placeholder="Cari makanan atau minuman..."
+                        autocomplete="off"
+                        aria-label="Cari menu"
+                    >
+
+                    <kbd>⌘ K</kbd>
+                </label>
+
+                <!-- Tombol filter berdasarkan kategori -->
+                <div
+                    class="category-list"
+                    id="categoryList"
+                    aria-label="Filter kategori"
+                >
+                    <button
+                        class="category active"
+                        data-category="Semua"
+                        type="button"
+                    >
+                        Semua
+                    </button>
+
+                    <button
+                        class="category"
+                        data-category="Makanan"
+                        type="button"
+                    >
+                        Makanan
+                    </button>
+
+                    <button
+                        class="category"
+                        data-category="Minuman"
+                        type="button"
+                    >
+                        Minuman
+                    </button>
+
+                    <button
+                        class="category"
+                        data-category="Camilan"
+                        type="button"
+                    >
+                        Camilan
+                    </button>
+
+                    <button
+                        class="category"
+                        data-category="Dessert"
+                        type="button"
+                    >
+                        Dessert
+                    </button>
+                </div>
+
+            </div>
+
+            <!--
+                Kartu menu dibuat oleh JavaScript.
+                Data nama, foto, harga, dan deskripsi
+                diambil dari variabel data menu di script.js.
+            -->
+            <div
+                class="menu-grid"
+                id="menuGrid"
+                aria-live="polite"
+            ></div>
+
+            <!-- Pesan ketika pencarian tidak menemukan menu -->
+            <p class="empty-state hidden" id="emptyState">
+                Menu tidak ditemukan. Coba kata kunci lain.
+            </p>
+
+        </section>
+
+
+        <!-- =========================================
+             4. BAGIAN TENTANG CAFE
+        ========================================== -->
+        <section class="story-section section-wrap" id="tentang">
+
+            <!-- Foto pendukung -->
+            <div class="story-image">
+                <img
+                    src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1000&q=85"
+                    alt="Kopi yang baru diseduh"
+                    loading="lazy"
+                >
+            </div>
+
+            <!-- Cerita dan identitas cafe -->
+            <div class="story-copy">
+
+                <p class="eyebrow">CERITA KAMI</p>
+
+                <h2>
+                    Sederhana dalam tampilan,<br>
+                    <em>istimewa dalam rasa.</em>
+                </h2>
+
+                <p>
+                    Kami percaya pengalaman yang baik dimulai dari
+                    hal sederhana: pilihan yang jelas, bahan
+                    berkualitas, dan sajian yang dibuat dengan
+                    perhatian.
+                </p>
+
+                <div class="story-signature">
+                    Dibuat dengan hati
+                    <span>✳</span>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         5. FOOTER / BAGIAN PENUTUP
+    ========================================== -->
+    <footer class="footer">
+
+        <!-- Logo pada footer -->
+        <a class="brand footer-brand" href="#beranda">
+            <span class="brand-mark">m</span>
+
+            <span>
+                Menu<span class="brand-light">Kita</span>
+            </span>
+        </a>
+
+        <p>
+            Menu yang baik, pengalaman yang berkesan.
+        </p>
+
+        <!-- Tahun diperbarui secara otomatis oleh JavaScript -->
+        <small>
+            © <span id="year"></span> MenuKita · Demo website
+        </small>
+
+    </footer>
+
+
+    <!-- =========================================
+         6. PANEL KERANJANG PESANAN
+    ========================================== -->
+
+    <!-- Lapisan latar untuk menutup keranjang saat diklik -->
+    <div class="overlay hidden" id="cartOverlay"></div>
+
+    <!-- Panel keranjang yang muncul dari sisi kanan -->
+    <aside
+        class="cart-drawer"
+        id="cartDrawer"
+        aria-label="Keranjang pesanan"
+        aria-hidden="true"
+    >
+
+        <div class="drawer-head">
+            <div>
+                <p class="eyebrow">PESANANMU</p>
+                <h2>Keranjang</h2>
+            </div>
+
+            <button
+                class="close-button"
+                id="cartClose"
+                type="button"
+                aria-label="Tutup keranjang"
+            >
+                ×
+            </button>
+        </div>
+
+        <!-- Daftar item dalam keranjang dibuat oleh JavaScript -->
+        <div class="cart-items" id="cartItems"></div>
+
+        <!-- Ringkasan harga dan tombol pesanan -->
+        <div class="cart-bottom">
+
+            <div class="total-row">
+                <span>Subtotal</span>
+                <strong id="cartSubtotal">Rp0</strong>
+            </div>
+
+            <p class="cart-disclaimer">
+                Total belum termasuk biaya tambahan jika ada.
+            </p>
+
+            <button
+                class="primary-button checkout-button"
+                id="checkoutButton"
+                type="button"
+            >
+                Lanjutkan Pesanan
+                <span>↗</span>
+            </button>
+
+            <!-- Pesan status dari JavaScript -->
+            <p class="checkout-message" id="checkoutMessage"></p>
+
+        </div>
+    </aside>
+
+
+    <!-- =========================================
+         7. MODAL PENGELOLAAN MENU
+    ========================================== -->
+
+    <div class="modal-backdrop hidden" id="adminBackdrop">
+
+        <section
+            class="admin-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="adminTitle"
+        >
+
+            <!-- Judul dan tombol tutup modal -->
+            <div class="drawer-head">
+                <div>
+                    <p class="eyebrow">MODE DEMO</p>
+                    <h2 id="adminTitle">Kelola menu</h2>
+                </div>
+
+                <button
+                    class="close-button"
+                    id="adminClose"
+                    type="button"
+                    aria-label="Tutup pengelola"
+                >
+                    ×
+                </button>
+            </div>
+
+            <!-- Penjelasan batas penyimpanan demo -->
+            <p class="admin-notice">
+                Perubahan disimpan hanya di browser ini melalui
+                localStorage. Ini belum merupakan dashboard admin
+                yang aman untuk penggunaan bisnis nyata.
+            </p>
+
+            <!-- Form untuk menambah atau mengedit menu -->
+            <form id="menuForm" class="admin-form">
+
+                <!-- ID tersembunyi untuk membedakan edit dan tambah -->
+                <input type="hidden" id="editId">
+
+                <!-- Nama menu -->
+                <label>
+                    Nama menu
+                    <input
+                        id="itemName"
+                        type="text"
+                        required
+                        maxlength="60"
+                        placeholder="Contoh: Latte"
+                    >
+                </label>
+
+                <div class="form-row">
+
+                    <!-- Kategori menu -->
+                    <label>
+                        Kategori
+                        <select id="itemCategory">
+                            <option>Makanan</option>
+                            <option>Minuman</option>
+                            <option>Camilan</option>
+                            <option>Dessert</option>
+                        </select>
+                    </label>
+
+                    <!-- Harga menu -->
+                    <label>
+                        Harga (Rp)
+                        <input
+                            id="itemPrice"
+                            type="number"
+                            required
+                            min="0"
+                            step="500"
+                            placeholder="22000"
+                        >
+                    </label>
+
+                </div>
+
+                <!-- URL foto menu -->
+                <label>
+                    URL foto (opsional)
+                    <input
+                        id="itemImage"
+                        type="url"
+                        placeholder="https://..."
+                    >
+                </label>
+
+                <!-- Deskripsi menu -->
+                <label>
+                    Deskripsi
+                    <input
+                        id="itemDescription"
+                        type="text"
+                        maxlength="120"
+                        placeholder="Deskripsi singkat menu"
+                    >
+                </label>
+
+                <!-- Tombol aksi form -->
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelEdit"
+                    >
+                        Batal
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Simpan Menu
+                    </button>
+
+                </div>
+            </form>
+
+            <!-- Daftar menu yang dapat dikelola -->
+            <div class="admin-list-title">
+                <strong>Daftar menu</strong>
+
+                <button
+                    class="text-button"
+                    id="resetMenu"
+                    type="button"
+                >
+                    Pulihkan contoh
+                </button>
+            </div>
+
+            <!-- Daftar pengelolaan dibuat oleh JavaScript -->
+            <div class="admin-list" id="adminList"></div>
+
+        </section>
+    </div>
+
+
+    <!-- Notifikasi singkat dari JavaScript -->
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+
+    <!-- =========================================
+         8. MENGHUBUNGKAN JAVASCRIPT
+    ========================================== -->
+
+    <!--
+        Diletakkan di akhir body agar elemen HTML
+        sudah tersedia saat JavaScript dijalankan.
+    -->
+    <script src="script.js"></script>
+
+</body>
+</html>
